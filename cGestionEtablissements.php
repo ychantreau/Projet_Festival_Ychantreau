@@ -122,10 +122,6 @@ function verifierDonneesEtabC($id, $nom, $adresseRue, $codePostal, $ville, $tel,
 }
 
 
-// LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaa
-/*LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
- * LAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAAAALAAAAaaaaa
- */
 function verifierDonneesEtabM($id, $nom, $adresseRue, $codePostal, $ville, $tel, $nomResponsable) {
     if ($nom == "" || $adresseRue == "" || $codePostal == "" || $ville == "" ||
             $tel == "" || $nomResponsable == "") {
@@ -140,6 +136,12 @@ function verifierDonneesEtabM($id, $nom, $adresseRue, $codePostal, $ville, $tel,
     if ($nom ){
         ajouterErreur("Le nom de l'établissement ne doit comporter que des caractères valides");
     }
+    /*if ($nom != ""){
+        // Si l'id est constitué que de chiffres, une erreur sera généré.
+        if (!estLettre($nom)){
+            ajouterErreur("L'établissement ne doit contenir que des lettres");
+        }
+    }*/
 }
 
 function estUnCp($codePostal) {
