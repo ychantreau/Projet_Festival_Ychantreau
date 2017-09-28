@@ -18,6 +18,11 @@ class AttributionDAO {
      * @param array $enreg
      * @return Attribution
      */
+    protected static function Jambon() {
+        return "Salut";
+    }
+    
+    
     protected static function enregVersMetier(array $enreg) {
         $idEtab = $enreg['IDETAB'];
         $idTypeChambre = $enreg['IDTYPECHAMBRE'];

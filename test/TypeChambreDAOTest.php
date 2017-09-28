@@ -15,7 +15,7 @@
 
         require_once __DIR__ . '/../includes/autoload.php';
 
-        $id = 'C3';
+        $id = 'C1';
         Bdd::connecter();
 
         echo "<h2>Test TypeChambreDAO</h2>";
