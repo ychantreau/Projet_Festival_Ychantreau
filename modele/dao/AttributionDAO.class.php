@@ -1,5 +1,6 @@
- <?php
-
+<?php
+ 
+ 
 namespace modele\dao;
 
 use modele\metier\Attribution;
