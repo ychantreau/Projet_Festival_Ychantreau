@@ -24,7 +24,6 @@ if ($action == 'demanderCreerEtab') {
     $nomResponsable = '';
     $prenomResponsable = '';
 }
-
 // S'il s'agit d'une modification et qu'on ne "vient" pas de ce formulaire, il
 // faut récupérer les données sinon on affichera les valeurs précédemment 
 // saisies
@@ -109,8 +108,9 @@ echo '
       </tr>
       <tr class="ligneTabNonQuad">
          <td> Téléphone*: </td>
-         <td><input type="text" value="' . $tel . '" name="tel" size ="20" 
-         maxlength="10"></td>
+         <td><input type="text" value="' . $tel . '" name="tel" size ="20" placeholder="0123456789" 
+         maxlength="10"> <-entrer son numéro de téléphone 10 caractères</td>
+         
       </tr>
       <tr class="ligneTabNonQuad">
          <td> E-mail: </td>
@@ -151,7 +151,8 @@ for ($i = 0; $i < 3; $i = $i + 1) {
 echo '
                </select>&nbsp; &nbsp; &nbsp; &nbsp; Nom*: 
                <input type="text" value="' . $nomResponsable . '" name=
-               "nomResponsable" size="26" maxlength="25">
+               "nomResponsable" size="26" maxlength="25"
+               style="text-transform:uppercase" /> 
                &nbsp; &nbsp; &nbsp; &nbsp; Prénom: 
                <input type="text"  value="' . $prenomResponsable . '" name=
                "prenomResponsable" size="26" maxlength="25">
