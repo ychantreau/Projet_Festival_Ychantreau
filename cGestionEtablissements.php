@@ -112,6 +112,13 @@ function verifierDonneesEtabC($id, $nom, $adresseRue, $codePostal, $ville, $tel,
     if ($codePostal != "" && !estUnCp($codePostal)) {
         ajouterErreur('Le code postal doit comporter 5 chiffres');
     }
+    if ($nom != ""){
+        // Si l'id est constitué que de chiffres, une erreur sera généré.
+        if (!estLettre($nom)){
+            ajouterErreur("L'établissement ne doit contenir que des lettres");
+        }
+    }
+   
 }
 
 

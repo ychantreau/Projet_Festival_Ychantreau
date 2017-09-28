@@ -6,6 +6,9 @@ function estEntier($valeur) {
     return preg_match('/[^0-9]/', $valeur) != 1;
 }
 
+function estLettre($valeur){
+    return preg_match('/[^a-zA-Z]/]', $valeur) != 1;
+}
 // Si la valeur transmise ne contient pas d'autres caractères que des chiffres  
 // et des lettres non accentuées, la fonction retourne vrai
 function estChiffresOuEtLettres($valeur) {
