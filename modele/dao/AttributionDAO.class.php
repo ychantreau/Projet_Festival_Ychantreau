@@ -1,5 +1,7 @@
 <?php
 
+ 
+ 
 namespace modele\dao;
 
 use modele\metier\Attribution;
@@ -18,6 +20,8 @@ class AttributionDAO {
      * @param array $enreg
      * @return Attribution
      */
+    
+    
     
     protected static function enregVersMetier(array $enreg) {
         $idEtab = $enreg['IDETAB'];
