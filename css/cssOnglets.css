@@ -16,7 +16,7 @@
 {
    /* Fond vert pâle (c'est la couleur de fond de l'onglet ouvert) 
    Ce fond sera recouvert par un Fond vert pour les onglets fermés */
-   background-color:aqua;
+   background-color:#CCFF50;
    /* Couleur rouge */
    color:#F50033;
    float:left;
@@ -55,7 +55,7 @@
 .menus .ongletPrem 
 { 
    /* Fond vert */
-   background-color:aqua;
+   background-color:#CCFF50;
    /* Couleur rouge */
    color:#F50033;
    margin:0px 0px 0px 0px;
@@ -89,7 +89,7 @@
 .menus .onglet a 
 { 
    /* Fond vert */
-   background-color:aqua;
+   background-color:#CCFF50;
    /* Couleur rouge */
    color:#F50033;
    /* Pas de soulignement du lien */

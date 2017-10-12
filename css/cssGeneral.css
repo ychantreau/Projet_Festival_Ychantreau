@@ -3,16 +3,16 @@
 /* Style de base pour la page (couleur fond : vert pâle, couleur texte : noir) */
 .basePage 
 {
-   background-color:black;
-   color:white;
+   background-color:#CCFF50;
+   color:black;
    font:11px Arial, Helvetica, sans-serif;
 }
 
 /* Style pour le titre (couleur du texte : rouge) */
 .titre 
 {
-   background-color:black;
-   color:white;
+   background-color:#CCFF50;
+   color:red;
    font:30px Arial, Helvetica, sans-serif;
    text-align:center;
 }
@@ -27,8 +27,8 @@
 mise en gras et en italique) */
 .texteAccueil
 {
-   background-color:black;
-   color:white;       
+   background-color:#CCFF50;
+   color:black;       
    font:14px Georgia, "Times New Roman", Times, serif;
    font-weight:bold;
    font-style:italic;
