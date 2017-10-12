@@ -7,6 +7,9 @@
  */
 
 namespace modele\dao;
+use modele\metier\Lieu;
+use PDOStatement;
+use PDO;
 
 /**
  * Description of LieuDAO
@@ -16,6 +19,16 @@ namespace modele\dao;
 class LieuDAO {
     
 
+    protected static function enregVersMetier(array $enreg) {
+        $id = $enreg['ID'];
+        $nom = $enreg['NOM'];
+        $adr = $enreg['ADR'];
+        $capacite = $enreg['CAPACITE'];
+
+        $unLieu = new Lieu($id, $nom, $adr, $capacite);
+
+        return $unLieu;
+    }
     /**
      * Retourne la liste de tous les lieus
      * @return array tableau d'objets de type Lieu
