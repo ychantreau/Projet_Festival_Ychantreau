@@ -3,7 +3,7 @@
 /* Style de base pour la page (couleur fond : vert pâle, couleur texte : noir) */
 .basePage 
 {
-   background-color:#DDFF88;
+   background-color:#CCFF50;
    color:black;
    font:11px Arial, Helvetica, sans-serif;
 }
@@ -11,7 +11,7 @@
 /* Style pour le titre (couleur du texte : rouge) */
 .titre 
 {
-   background-color:#DDFF88;
+   background-color:#CCFF50;
    color:#F50033;
    font:30px Arial, Helvetica, sans-serif;
    text-align:center;
