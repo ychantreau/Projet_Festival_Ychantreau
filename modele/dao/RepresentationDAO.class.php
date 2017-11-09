@@ -9,6 +9,7 @@
 namespace modele\dao;
 
 use modele\metier\Representation;
+
 use PDOStatement;
 use PDO;
 
@@ -21,13 +22,16 @@ class RepresentationDAO {
 
     protected static function enregVersMetier(array $enreg) {
         $id = $enreg['ID'];
-        $lieu = $enreg[strtoupper('ID_LIEU')];
-        $groupe = $enreg['ID_GROUPE'];
+        $idGroupe= $enreg['ID_GROUPE'];
+        $idLieu= $enreg['ID_LIEU'];
         $dateRep = $enreg['DATE_REP'];
         $heureDebut = $enreg['HEUREDEBUT'];
         $heureFin = $enreg['HEUREFIN'];
 
-        $uneRepresentation = new Representation($id, $lieu, $dateRep, $heureDebut, $heureFin);
+        $objetGroupe = GroupeDAO::getOneById($idGroupe);
+        $objetLieu = LieuDAO::getOneById($idLieu);
+        
+        $uneRepresentation = new Representation($id, $objetGroupe, $objetLieu, $dateRep, $heureDebut, $heureFin);
 
         return $uneRepresentation;
     }
@@ -42,20 +46,23 @@ class RepresentationDAO {
         // Note : bindParam requiert une référence de variable en paramètre n°2 ; 
         // avec bindParam, la valeur affectée à la requête évoluerait avec celle de la variable sans
         // qu'il soit besoin de refaire un appel explicite à bindParam
+        $groupe = $objetMetier->getGroupe();
+        $lieu = $objetMetier->getLieu();
         $stmt->bindValue(':id', $objetMetier->getId());
-        $stmt->bindValue(':nom', $objetMetier->getNom());
+        $stmt->bindValue(':idTypeCh', $groupe->getGroupe()->getId());
+        $stmt->bindValue(':idTypeCh', $lieu->getLieu()->getId());
         $stmt->bindValue(':dateRep', $objetMetier->getDate());
         $stmt->bindValue(':heureDebut', $objetMetier->getHeureDebut());
         $stmt->bindValue(':heureFin', $objetMetier->getHeureFin());
     }
 
     /**
-     * Retourne la liste de toutess les representation
+     * Retourne la liste de toutess les representations SELECT date_rep,l.nom,g.nom,heureDebut,heureFin FROM Representation r INNER JOIN Groupe g ON r.id_groupe = g.id INNER JOIN Lieu l ON r.id_lieu = l.id
      * @return array tableau d'objets de type Representation
      */
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM Representation INNER JOIN Groupe ON Representation.id_groupe = Groupe.id INNER JOIN Lieu ON Representation.id_lieu = Lieu.id";
+        $requete = "SELECT * FROM Representation r INNER JOIN Groupe g ON r.id_groupe = g.id INNER JOIN Lieu l ON r.id_lieu = l.id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         if ($ok) {
@@ -70,12 +77,13 @@ class RepresentationDAO {
 
     /**
      * Recherche une représentation selon la valeur de son identifiant
+     * SELECT * FROM Representation r INNER JOIN Groupe g ON r.id_groupe = g.id INNER JOIN Lieu l ON r.id_lieu = l.id WHERE r.id = :id
      * @param string $id
      * @return Representation ; null sinon
      */
     public static function getOneById($id) {
         $objetConstruit = null;
-        $requete = "SELECT * FROM Representation INNER JOIN Groupe ON Representation.id_groupe = Groupe.id INNER JOIN Lieu ON Representation.id_lieu = Lieu.id";
+        $requete = "SELECT * FROM Representation WHERE id = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
