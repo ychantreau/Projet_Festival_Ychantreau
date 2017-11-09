@@ -1,10 +1,11 @@
-CREATE TABLE Representations (
-    date CHAR(11) NOT NULL,
+CREATE TABLE Representation (
+    id int NOT NULL AUTO_INCREMENT, 
+    date_rep DATE NOT NULL,
     id_lieu int NOT NULL,
     id_groupe CHAR(4) NOT NULL,
-    heureDebut VARCHAR(5),
-    heureFin VARCHAR(5),
-    PRIMARY KEY (date,id_lieu,id_groupe),
+    heureDebut TIME,
+    heureFin TIME,
+    PRIMARY KEY (id),
     CONSTRAINT FK_Lieu FOREIGN KEY (id_lieu)
     REFERENCES Lieu(id),
     CONSTRAINT FK_Groupe FOREIGN KEY (id_groupe)
