@@ -51,11 +51,11 @@ class RepresentationDAO {
 
     /**
      * Retourne la liste de toutess les representations
-     * @return array tableau d'objets de type Representations
+     * @return array tableau d'objets de type Representation
      */
     public static function getAll() {
         $lesObjets = array();
-        $requete = "SELECT * FROM Representations INNER JOIN Groupe ON Representations.id_groupe = Groupe.id INNER JOIN Lieu ON Representations.id_lieu = Lieu.id";
+        $requete = "SELECT * FROM Representation INNER JOIN Groupe ON Representation.id_groupe = Groupe.id INNER JOIN Lieu ON Representation.id_lieu = Lieu.id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $ok = $stmt->execute();
         if ($ok) {
@@ -71,11 +71,11 @@ class RepresentationDAO {
     /**
      * Recherche une représentation selon la valeur de son identifiant
      * @param string $id
-     * @return Representations ; null sinon
+     * @return Representation ; null sinon
      */
     public static function getOneById($id) {
         $objetConstruit = null;
-        $requete = "SELECT * FROM Representations INNER JOIN Groupe ON Representations.id_groupe = Groupe.id INNER JOIN Lieu ON Representations.id_lieu = Lieu.id";
+        $requete = "SELECT * FROM Representation INNER JOIN Groupe ON Representation.id_groupe = Groupe.id INNER JOIN Lieu ON Representation.id_lieu = Lieu.id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();
@@ -92,7 +92,7 @@ class RepresentationDAO {
      * @return boolean =FALSE si l'opération échoue
      */
     public static function insert(Representation $objet) {
-        $requete = "INSERT INTO Representations VALUES (:id, :nom, :dateRep, :heureDebut, :heureFin)";
+        $requete = "INSERT INTO Representation VALUES (:id, :nom, :dateRep, :heureDebut, :heureFin)";
         $stmt = Bdd::getPdo()->prepare($requete);
         self::metierVersEnreg($objet, $stmt);
         $ok = $stmt->execute();
@@ -107,7 +107,7 @@ class RepresentationDAO {
      */
     public static function updateRep($id, Representation $objet) {
         $ok = false;
-        $requete = "UPDATE  Representations SET NOM=:nom, DATE_REP=:dateRep,
+        $requete = "UPDATE  Representation SET NOM=:nom, DATE_REP=:dateRep,
            HEUREDEBUT=:heureDebut, HEUREFIN=:heureFin,
            WHERE ID=:id";
         $stmt = Bdd::getPdo()->prepare($requete);
@@ -124,7 +124,7 @@ class RepresentationDAO {
      */
     public static function delete($id) {
         $ok = false;
-        $requete = "DELETE FROM Representations WHERE ID = :id";
+        $requete = "DELETE FROM Representation WHERE ID = :id";
         $stmt = Bdd::getPdo()->prepare($requete);
         $stmt->bindParam(':id', $id);
         $ok = $stmt->execute();

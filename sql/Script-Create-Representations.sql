@@ -1,4 +1,4 @@
-CREATE TABLE Representations (
+CREATE TABLE Representation  (
     date CHAR(11) NOT NULL,
     id_lieu int NOT NULL,
     id_groupe CHAR(4) NOT NULL,
