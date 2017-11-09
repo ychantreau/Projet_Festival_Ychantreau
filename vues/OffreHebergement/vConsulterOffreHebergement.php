@@ -27,7 +27,7 @@ if ($nbEtab != 0 && $nbTypesChambres != 0) {
 
         // AFFICHAGE DU NOM DE L'ÉTABLISSEMENT ET D'UN LIEN VERS LE FORMULAIRE DE
         // MODIFICATION
-        echo "<strong>$nom</strong><br>
+            echo "<strong>$nom</strong><br>
       <a href='cOffreHebergement.php?action=demanderModifierOffre&idEtab=$idEtab'>
       Modifier</a>
    

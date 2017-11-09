@@ -21,6 +21,7 @@ require_once __DIR__ . '/../includes/autoload.php';
         // Test n°1
         echo "<h3>Test getOneById</h3>";
         try {
+            $id = 1;
             $objet = RepresentationDAO::getOneById($id);
             var_dump($objet);
         } catch (Exception $ex) {
