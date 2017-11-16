@@ -17,20 +17,21 @@ $nbLieux = count($lesLieux);
 $lesRepresentations = RepresentationDAO::getAll();
 $nbRepresentations = count($lesRepresentations);
 
-if ($nbGroupes != 0 && $nbLieux != 0 && $nbLieux != 0 ){
+if ($nbGroupes != 0 && $nbLieux != 0){
     
     
     // BOUCLE SUR LES Date de représentation
+    
     $dateTest = "0";
-    $endTest = 0;
+    
+    
     foreach ($lesRepresentations as $uneRepresentation) {
         $dateRepresentation = $uneRepresentation->getDateRep();
         
-        if($endTest == 1){
-            echo"</table><br>";
-        }
         
         if($dateRepresentation != $dateTest){
+            echo"</table><br>";
+            echo "<br/>";
             $dateTest = $dateRepresentation;
             echo "<strong>$dateRepresentation</strong><br>
          <table width='45%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
@@ -47,17 +48,14 @@ if ($nbGroupes != 0 && $nbLieux != 0 && $nbLieux != 0 ){
         
         echo " 
             <tr class='ligneTabQuad'>
-            <td>".$uneRepresentation->getLieu()."</td>
-            <td>".$uneRepresentation->getGroupe()."</td>
+            <td>".$uneRepresentation->getLieu()->getNom()."</td>
+            <td>".$uneRepresentation->getGroupe()->getNom()."</td>
             <td>".$uneRepresentation->getHeureDebut()."</td>
             <td>".$uneRepresentation->getHeureFin()."</td>
             <td> Bientôt, un lien pour modifier </td>
             <td> Bientôt, un lien pour modifier </td>";
         
-            if($endTest == 1){
-            $endTest = 1;
-            }
     }
-    echo"</table><br>"; 
+     
         
 }
