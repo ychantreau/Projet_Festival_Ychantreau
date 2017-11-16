@@ -32,7 +32,8 @@
                             <?php construireMenu("Gestion établissements", "cGestionEtablissements.php", 2); ?>
                             <?php construireMenu("Gestion types chambres", "cGestionTypesChambres.php", 3); ?>
                             <?php construireMenu("Offre hébergement", "cOffreHebergement.php", 4); ?>
-                            <?php construireMenu("Attribution chambres", "cAttributionChambres.php", 5); ?>              
+                            <?php construireMenu("Attribution chambres", "cAttributionChambres.php", 5); ?> 
+                            <?php construireMenu("Gestion Représentation", "cGestionRepresentation.php", 6); ?>
                         </ul>
                     </div>
 

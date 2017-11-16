@@ -14,6 +14,7 @@ namespace modele\metier;
  * @author ttnguyen
  */
 class Representation {
+    private $id;
     
     private $id;
     
@@ -36,27 +37,27 @@ class Representation {
         $this->heureFin = $heureFin;
     }
 
-    function getId() {
+    static function getId() {
         return $this->id;
     }
     
-    function getGroupe() {
+    static function getGroupe() {
         return $this->groupe;
     }
 
-    function getLieu() {
+    static function getLieu() {
         return $this->lieu;
     }
 
-    function getDateRep() {
+    static function getDateRep() {
         return $this->dateRep;
     }
 
-    function getHeureDebut() {
+    static function getHeureDebut() {
         return $this->heureDebut;
     }
 
-    function getHeureFin() {
+    static function getHeureFin() {
         return $this->heureFin;
     }
 
