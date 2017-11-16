@@ -16,6 +16,8 @@ namespace modele\metier;
 class Representation {
     private $id;
     
+    private $id;
+    
     private $groupe;
     
     private $lieu;

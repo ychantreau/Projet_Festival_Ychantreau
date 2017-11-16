@@ -17,32 +17,29 @@ $nbLieux = count($lesLieux);
 $lesRepresentations = RepresentationDAO::getAll();
 $nbRepresentations = count($lesRepresentations);
 
-if ($nbGroupes != 0 && $nbLieux != 0){
-    
-    
+echo"<h2 class=center>Programmes par jours</h2><br_/>";
+
+if ($nbGroupes != 0 && $nbLieux != 0 ){
+     
     // BOUCLE SUR LES Date de représentation
-    
+    $test = 0;
     $dateTest = "0";
-    
-    
     foreach ($lesRepresentations as $uneRepresentation) {
         $dateRepresentation = $uneRepresentation->getDateRep();
         
-        
         if($dateRepresentation != $dateTest){
-            echo"</table><br>";
-            echo "<br/>";
+            if($test == 1){
+                echo"</table><br>";
+            }
             $dateTest = $dateRepresentation;
             echo "<strong>$dateRepresentation</strong><br>
          <table width='45%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
             echo "
          <tr class='enTeteTabQuad'>
             <td width='30%'>Lieu</td>
-            <td width='35%'>Groupe</td>
-            <td width='35%'>Heure Début</td>
-            <td width='30%'>HeureFin</td>
-            <td width='35%'>'       '</td>
-            <td width='35%'>'       '</td> 
+            <td width='30%'>Groupe</td>
+            <td width='20%'>Heure Début</td>
+            <td width='20%'>HeureFin</td>
          </tr>";
         }
         
@@ -50,11 +47,12 @@ if ($nbGroupes != 0 && $nbLieux != 0){
             <tr class='ligneTabQuad'>
             <td>".$uneRepresentation->getLieu()->getNom()."</td>
             <td>".$uneRepresentation->getGroupe()->getNom()."</td>
-            <td>".$uneRepresentation->getHeureDebut()."</td>
-            <td>".$uneRepresentation->getHeureFin()."</td>
-            <td> Bientôt, un lien pour modifier </td>
-            <td> Bientôt, un lien pour modifier </td>";
+            <td><center>".$uneRepresentation->getHeureDebut()."</center></td>
+            <td><center>".$uneRepresentation->getHeureFin()."</center></td>";
         
+            if($test == 0){
+                $test = 1;
+            }
     }
      
         
