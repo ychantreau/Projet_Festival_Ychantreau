@@ -35,27 +35,27 @@ class Representation {
         $this->heureFin = $heureFin;
     }
 
-    static function getId() {
+    function getId() {
         return $this->id;
     }
     
-    static function getGroupe() {
+    function getGroupe() {
         return $this->groupe;
     }
 
-    static function getLieu() {
+    function getLieu() {
         return $this->lieu;
     }
 
-    static function getDateRep() {
+    function getDateRep() {
         return $this->dateRep;
     }
 
-    static function getHeureDebut() {
+    function getHeureDebut() {
         return $this->heureDebut;
     }
 
-    static function getHeureFin() {
+    function getHeureFin() {
         return $this->heureFin;
     }
 
