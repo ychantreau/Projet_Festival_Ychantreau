@@ -24,11 +24,20 @@ echo "
 $lesGroupes = GroupeDAO::getAll();
 // BOUCLE SUR LES GROUPES
 foreach ($lesGroupes as $unGroupe) {
+    $id = $unGroupe->getId();
     $nom = $unGroupe->getNom();
     echo "
 		<tr class='ligneTabNonQuad'>
-         <td align='center'>$nom</td></tr>";
-
+         <td align='center'>$nom</td>
+             
+        </tr>";
+/*<td width='16%' align='center'> 
+         <a href='cGestionGroupes.php?action=detailGrp&id=$id'>
+         Voir détail</a></td>
+         
+         <td width='16%' align='center'> 
+         <a href='cGestionGroupes.php?action=demanderModifierGrp&id=$id'>
+         Modifier</a></td>*/
     // S'il existe déjà des attributions pour le groupe, il faudra
     // d'abord les supprimer avant de pouvoir supprimer le groupe
 //    if (!existeAttributionsGrp($connexion, $id)) {

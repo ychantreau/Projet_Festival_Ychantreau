@@ -19,11 +19,8 @@ include("includes/_gestionErreurs.inc.php");
 if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'initial';
 }
-
-$action = $_REQUEST['action'];
-
+    $action = $_REQUEST['action'];
 include("vues/GestionGroupes/vObtenirGroupes.php");
-
 // Aiguillage selon l'étape
 
 /*switch ($action) {

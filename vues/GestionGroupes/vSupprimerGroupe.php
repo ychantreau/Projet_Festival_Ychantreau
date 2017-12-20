@@ -7,14 +7,14 @@ Bdd::connecter();
 
 include("includes/_debut.inc.php");
 
-// SUPPRIMER L'ÉTABLISSEMENT SÉLECTIONNÉ
+// SUPPRIMER LE GROUPE SÉLECTIONNÉ
 
 $id = $_REQUEST['id'];  // Non obligatoire mais plus propre
 $unGroupe = GroupeDAO::getOneById($id);
-/* @var $unEtab Etablissement  */
+/* @var $unGroupê Groupe  */
 $nom = $unGroupe->getNom();
 echo "
-<br><center>Voulez-vous vraiment supprimer l'établissement $nom ?
+<br><center>Voulez-vous vraiment supprimer le groupe $nom ?
 <h3><br>
 <a href='cGestionGroupes.php?action=validerSupprimerGroup&id=$id'>Oui</a>
 &nbsp; &nbsp; &nbsp; &nbsp;

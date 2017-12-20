@@ -12,7 +12,7 @@ Bdd::connecter();
 
 include("includes/_debut.inc.php");
 
-// CRÉER OU MODIFIER UN ÉTABLISSEMENT 
+// CRÉER OU MODIFIER UN GROUPE 
 if ($action == 'demanderCreerGroup') {
     $id = '';
     $nom = '';
@@ -25,7 +25,7 @@ if ($action == 'demanderCreerGroup') {
 //ModificationGroupe
 if ($action == 'demanderModifierGroup') {
     $unGroupe = GroupeDAO::getOneById($id);
-    /* @var $unEtab Etablissement  */
+    /* @var $unGroupe Groupe */
     $nom = $unGroupe->getNom();
     $responsable = $unGroupe->getIdentite();
     $codePostal = $unGroupe->getAdresse();

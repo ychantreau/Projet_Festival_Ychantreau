@@ -11,9 +11,8 @@ include("includes/_debut.inc.php");
 
 // OBTENIR LE DÉTAIL DU GROUPE SÉLECTIONNÉ
 
-$unGrp = GroupeDAO::getOneById('g002');
+$unGrp = GroupeDAO::getOneById($id);
 /* @var $unGrp Groupe  */
-$id= $unGrp->getId();
 $nom = $unGrp->getNom();
 $identite = $unGrp->getIdentite();
 $adresse = $unGrp->getAdresse();

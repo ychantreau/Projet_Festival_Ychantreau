@@ -2,6 +2,7 @@
 namespace modele\dao;
 
 use modele\metier\Groupe;
+use PDOStatement;
 use PDO;
 
 /**
@@ -30,6 +31,26 @@ class GroupeDAO {
 
         return $unGroupe;
     }
+    
+        /**
+     * Valorise les paramètres d'une requête préparée avec l'état d'un objet Groupe
+     * @param type $objetMetier un Groupe
+     * @param type $stmt requête préparée
+     */
+    protected static function metierVersEnreg(Groupe $objetMetier, PDOStatement $stmt) {
+        // On utilise bindValue plutôt que bindParam pour éviter des variables intermédiaires
+        // Note : bindParam requiert une référence de variable en paramètre n°2 ; 
+        // avec bindParam, la valeur affectée à la requête évoluerait avec celle de la variable sans
+        // qu'il soit besoin de refaire un appel explicite à bindParam
+        $stmt->bindValue(':id', $objetMetier->getId());
+        $stmt->bindValue(':nom', $objetMetier->getNom());
+        $stmt->bindValue(':identiteResponsable', $objetMetier->getIdentite());
+        $stmt->bindValue(':adressePostale', $objetMetier->getAdresse());
+        $stmt->bindValue(':nombrePersonnes', $objetMetier->getNbPers());
+        $stmt->bindValue(':nomPays', $objetMetier->getNomPays());
+        $stmt->bindValue(':hebergement', $objetMetier->getHebergement());
+    }
+
 
 
     /**
@@ -114,7 +135,53 @@ class GroupeDAO {
         return $lesGroupes;
     }
 
+    
+    /**
+     * Insérer un nouvel enregistrement dans la table à partir de l'état d'un objet métier
+     * @param Groupe $objet objet métier à insérer
+     * @return boolean =FALSE si l'opération échoue
+     */
+    public static function insert(Groupe $objet) {
+        $requete = "INSERT INTO Groupe VALUES (:id, :nom, :identiteResponsable, :adressePostale, :nombrePersonnes, :nomPays, :hebergement)";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        self::metierVersEnreg($objet, $stmt);
+        $ok = $stmt->execute();
+        return ($ok && $stmt->rowCount() > 0);
+    }
 
+    /**
+     * Mettre à jour enregistrement dans la table à partir de l'état d'un objet métier
+     * @param string identifiant de l'enregistrement à mettre à jour
+     * @param Groupe $objet objet métier à mettre à jour
+     * @return boolean =FALSE si l'opérationn échoue
+     */
+    public static function update($id, Groupe $objet) {
+        $ok = false;
+        $requete = "UPDATE  Groupe SET NOM=:nom, IDENTITERESPONSABLE=:identiteResponsable,
+           ADRESSEPOSTALE=:adressePostale, NOMBREPERSONNES=:nombrePersonnes, NOMPAYS=:nomPays,
+           HEBERGEMENT=:hebergement
+           WHERE ID=:id";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        self::metierVersEnreg($objet, $stmt);
+        $stmt->bindParam(':id', $id);
+        $ok = $stmt->execute();
+        return ($ok && $stmt->rowCount() > 0);
+    }
+
+     /**
+     * Détruire un enregistrement de la table GROUPE d'après son identifiant
+     * @param string identifiant de l'enregistrement à détruire
+     * @return boolean =TRUE si l'enregistrement est détruit, =FALSE si l'opération échoue
+     */
+    public static function delete($id) {
+        $ok = false;
+        $requete = "DELETE FROM Groupe WHERE ID = :id";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $stmt->bindParam(':id', $id);
+        $ok = $stmt->execute();
+        $ok = $ok && ($stmt->rowCount() > 0);
+        return $ok;
+    }
     
     
 }
