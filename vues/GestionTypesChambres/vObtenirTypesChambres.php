@@ -12,10 +12,15 @@ include("includes/_debut.inc.php");
 
 echo "
 <br>
-<table width='40%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong>Types de chambres</strong></td>
-   </tr>";
+<div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>
+<thead>
+   <tr>
+      <th><strong>Types de chambres</strong></th>
+      <th>Détail</th>
+      <th>Modifier</th>
+      <th>Supprimer</th>
+   </tr></thead><tbody>";
 $lesTypesChambres = TypeChambreDAO::getAll();
 
 
@@ -24,10 +29,10 @@ foreach ($lesTypesChambres as $unTypeChambre) {
     $id = $unTypeChambre->getId();
     $libelle = $unTypeChambre->getLibelle();
     echo "
-      <tr class='ligneTabNonQuad'> 
-         <td width='15%'>$id</td>
-         <td width='33%'>$libelle</td>
-         <td width='26%' align='center'>
+      <tr> 
+         <td>$id</td>
+         <td>$libelle</td>
+         <td>
          
          <a href='cGestionTypesChambres.php?action=demanderModifierTypeChambre&id=$id'>
          Modifier</a></td>";
@@ -37,19 +42,19 @@ foreach ($lesTypesChambres as $unTypeChambre) {
 //    if (!existeAttributionsTypeChambre($connexion, $id)) {
     if (count(AttributionDAO::getAllByIdTypeChambre($id))==0) {
         echo "
-            <td width='26%' align='center'>
+            <td>
             <a href='cGestionTypesChambres.php?action=demanderSupprimerTypeChambre&id=$id'>
             Supprimer</a></td>";
     } else {
-        echo "<td width='26%'>&nbsp; </td>";
+        echo "<td>&nbsp; </td>";
     }
     echo "               
     </tr>";
 }
-echo "    
+echo " </tbody>   
 </table><br>
 <a href='cGestionTypesChambres.php?action=demanderCreerTypeChambre'>
-Création d'un type de chambre</a>";
+Création d'un type de chambre</a></div>";
 
 include("includes/_fin.inc.php");
 

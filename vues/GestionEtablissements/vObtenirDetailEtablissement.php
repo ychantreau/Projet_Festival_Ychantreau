@@ -26,37 +26,37 @@ $prenomResponsable = $unEtab->getPrenomResp();
 
 
 echo "
-<br>
-<table width='60%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
-   
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong>$nom</strong></td>
+<div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>
+   <tbody>
+   <tr>
+      <td><strong>$nom</strong></td>
    </tr>
-   <tr class='ligneTabNonQuad'>
-      <td  width='20%'> Id: </td>
+   <tr >
+      <td> Id: </td>
       <td>$id</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Adresse: </td>
       <td>$adresseRue</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Code postal: </td>
       <td>$codePostal</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr >
       <td> Ville: </td>
       <td>$ville</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Téléphone: </td>
       <td>$tel</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> E-mail: </td>
       <td>$adresseElectronique</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Type: </td>";
 if ($type == 1) {
     echo "<td> Etablissement scolaire </td>";
@@ -65,14 +65,15 @@ if ($type == 1) {
 }
 echo "
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Responsable: </td>
       <td>$civiliteResponsable&nbsp; $nomResponsable&nbsp; $prenomResponsable
       </td>
-   </tr> 
+   </tr>
+   </tbody>
 </table>
 <br>
-<a href='cGestionEtablissements.php'>Retour</a>";
+<a href='cGestionEtablissements.php'>Retour</a></div>";
 
 include("includes/_fin.inc.php");
 

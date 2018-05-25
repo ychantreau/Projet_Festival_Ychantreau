@@ -20,7 +20,7 @@ echo "
    <tr>
       <td class='texteAccueil'>
          Cette application web permet de gérer l'hébergement des groupes de musique 
-         durant le festival Folklores du Monde.
+         durant le festival Folklores du Monde. 
       </td>
    </tr>
    <tr>

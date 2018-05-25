@@ -13,11 +13,15 @@ include("includes/_debut.inc.php");
 
 echo "
 <br>
-<table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
-
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong>Etablissements</strong></td>
-   </tr>";
+<div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>
+<thead>
+   <tr>
+      <th><strong>Etablissements</strong></th>
+      <th>Détail</th>
+      <th>Modifier</th>
+      <th>Supprimer</th>
+   </tr></thead><tbody>";
 
 $lesEtablissements = EtablissementDAO::getAll();
 // BOUCLE SUR LES ÉTABLISSEMENTS
@@ -25,14 +29,14 @@ foreach ($lesEtablissements as $unEtablissement) {
     $id = $unEtablissement->getId();
     $nom = $unEtablissement->getNom();
     echo "
-		<tr class='ligneTabNonQuad'>
-         <td width='52%'>$nom</td>
+		<tr>
+         <td>$nom</td>
          
-         <td width='16%' align='center'> 
+         <td> 
          <a href='cGestionEtablissements.php?action=detailEtab&id=$id'>
          Voir détail</a></td>
          
-         <td width='16%' align='center'> 
+         <td> 
          <a href='cGestionEtablissements.php?action=demanderModifierEtab&id=$id'>
          Modifier</a></td>";
 
@@ -42,21 +46,23 @@ foreach ($lesEtablissements as $unEtablissement) {
     $lesAttributionsDeCetEtablissement = AttributionDAO::getAllByIdEtab($id);
     if (count($lesAttributionsDeCetEtablissement)==0) {
         echo "
-            <td width='16%' align='center'> 
+            <td> 
             <a href='cGestionEtablissements.php?action=demanderSupprimerEtab&id=$id'>
             Supprimer</a></td>";
     } else {
         echo "
-            <td width='16%'>&nbsp; </td>";
+            <td>&nbsp; </td>";
     }
     echo "
       </tr>";
 }
 echo "
+    </tbody>
 </table>
 <br>
 <a href='cGestionEtablissements.php?action=demanderCreerEtab'>
-Création d'un établissement</a >";
+Création d'un établissement</a>
+</div>";
 
 include("includes/_fin.inc.php");
 

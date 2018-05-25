@@ -35,18 +35,19 @@ $nbCol = ($nbEtabOffrantChambres * $nbTypesChambres) + 1;
 
 echo "
 <br>
-<table width='90%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
+<div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>";
 
 // AFFICHAGE DE LA 1ÈRE LIGNE D'EN-TÊTE
 echo "
-   <tr class='enTeteTabQuad'>
+   <tr>
       <td  colspan='$nbCol'><strong>
       Effectuer ou modifier les attributions</strong></td>
    </tr>";
 
 // AFFICHAGE DE LA 2ÈME LIGNE D'EN-TÊTE (ÉTABLISSEMENTS)
 echo "
-   <tr class='ligneTabQuad'>
+   <tr>
       <td rowspan='2'>&nbsp;</td>";
 
 // BOUCLE SUR LES ÉTABLISSEMENTS
@@ -64,7 +65,7 @@ echo "
 
 // AFFICHAGE DE LA 3ÈME LIGNE D'EN-TÊTE (LIGNE AVEC C1, C2, ..., C1, C2, ...)
 echo "
-   <tr class='ligneTabQuad'>";
+   <tr>";
 
 // BOUCLE BASÉE SUR LE CRITÈRE ÉTABLISSEMENT 
 foreach ($lesEtabOffrantChambres as $unEtab) {
@@ -88,7 +89,7 @@ foreach ($lesEtabOffrantChambres as $unEtab) {
         }
         if ($nbOffre == 0) {
             // Affichage du type de chambre sur fond gris
-            echo "<td class='absenceOffre'>$idTypeChambre<br>&nbsp;</td>";
+            echo "<td class='table-secondary'>$idTypeChambre<br>&nbsp;</td>";
         } else {
             // Recherche du nombre de chambres occupées pour l'établissement 
             // et le type de chambre courants
@@ -104,9 +105,9 @@ foreach ($lesEtabOffrantChambres as $unEtab) {
             // s'il y a des chambres libres sinon seul le type chambre est 
             // affiché               
             if ($nbChLib != 0) {
-                echo "<td class='libre'>$idTypeChambre<br>$nbChLib</td>";
+                echo "<td class='table-success'>$idTypeChambre<br>$nbChLib</td>";
             } else {
-                echo "<td class='reserveSiLien'>$idTypeChambre<br>&nbsp;
+                echo "<td>$idTypeChambre<br>&nbsp;
                   </td>";
             }
         }
@@ -126,7 +127,7 @@ foreach ($lesGroupes as $unGroupe) {
     $idGroupe = $unGroupe->getId();
     $nom = $unGroupe->getNom();
     echo "
-      <tr class='ligneTabQuad'>
+      <tr>
          <td align='center' width='25%'>$nom</td>";
 
     // BOUCLE SUR LES ÉTABLISSEMENTS
@@ -156,7 +157,7 @@ foreach ($lesGroupes as $unGroupe) {
             }
             if ($nbOffre == 0) {
                 // Affichage d'une cellule vide sur fond gris 
-                echo "<td class='absenceOffre'>&nbsp;</td>";
+                echo "<td class='table-secondary'>&nbsp;</td>";
             } else {
 //                $nbOccup = obtenirNbOccup($connexion, $idEtab, $idTypeChambre);
                 $nbOccup = AttributionDAO::getNbOccupiedRooms($idEtab, $idTypeChambre);
@@ -181,7 +182,7 @@ foreach ($lesGroupes as $unGroupe) {
                     // attribuées au groupe
                     $nbMax = $nbChLib + $nbOccupGroupe;
                     echo "
-                     <td class='reserve'>
+                     <td class='table-warning'>
                      <a href='cAttributionChambres.php?action=donnerNbChambres&idEtab=$idEtab&idTypeChambre=$idTypeChambre&idGroupe=$idGroupe&nbChambres=$nbMax'>
                      $nbOccupGroupe</a></td>";
                 } else {
@@ -191,11 +192,11 @@ foreach ($lesGroupes as $unGroupe) {
                     // des chambres libres sinon rien n'est affiché     
                     if ($nbChLib != 0) {
                         echo "
-                        <td class='reserveSiLien'>
+                        <td>
                         <a href='cAttributionChambres.php?action=donnerNbChambres&idEtab=$idEtab&idTypeChambre=$idTypeChambre&idGroupe=$idGroupe&nbChambres=$nbChLib'>
                         __</a></td>";
                     } else {
-                        echo "<td class='reserveSiLien'>&nbsp;</td>";
+                        echo "<td style='color:black;'>&nbsp;</td>";
                     }
                 }
             }
@@ -206,20 +207,20 @@ echo "
 </table>"; // Fin du tableau principal
 // AFFICHAGE DE LA LÉGENDE
 echo "
-<table width='70%' align=center>
+<table class='table table-bordered'>
    <tr>
       <br>
-	    <td class='reserveSiLien' height='10'>&nbsp;</td>
+	    <td class='table-default' height='10'>&nbsp;</td>
       <td width='21%' align='left'>Réservation possible si lien affiché</td>
-      <td class='absenceOffre' height='10'>&nbsp;</td>
+      <td class='table-secondary' height='10'>&nbsp;</td>
       <td width='21%' align='left'>Absence d'offre</td>
-      <td class='reserve' height='10'>&nbsp;</td>
+      <td class='table-warning' height='10'>&nbsp;</td>
       <td width='21%' align='left'>Nombre de places réservées</td>
-      <td class='libre' height='10'>&nbsp;</td>
+      <td class='table-success'' height='10'>&nbsp;</td>
       <td width='21%' align='left'>Nombre de places encore disponibles</td>
    </tr>
 </table>";
-echo "<br><center><a href='cAttributionChambres.php'>Retour</a></center>";
+echo "<br><center><a href='cAttributionChambres.php'>Retour</a></center></div>";
 
 include("includes/_fin.inc.php");
 

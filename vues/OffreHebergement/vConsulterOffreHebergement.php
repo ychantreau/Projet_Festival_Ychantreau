@@ -31,15 +31,16 @@ if ($nbEtab != 0 && $nbTypesChambres != 0) {
       <a href='cOffreHebergement.php?action=demanderModifierOffre&idEtab=$idEtab'>
       Modifier</a>
    
-      <table width='45%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
+      <div style='margin-left:10%;margin-right:10%;'>
+        <table class='table table-bordered'>";
 
         // AFFICHAGE DE LA LIGNE D'EN-TÊTE
-        echo "
-         <tr class='enTeteTabQuad'>
-            <td width='30%'>Type</td>
-            <td width='35%'>Capacité</td>
-            <td width='35%'>Nombre de chambres</td> 
-         </tr>";
+        echo "<thead>
+         <tr>
+            <th>Type</th>
+            <th>Capacité</th>
+            <th>Nombre de chambres</th> 
+         </tr></thead>";
 
         // BOUCLE SUR LES TYPES DE CHAMBRES (AFFICHAGE D'UNE LIGNE PAR TYPE DE 
         // CHAMBRE AVEC LE NOMBRE DE CHAMBRES OFFERTES DANS L'ÉTABLISSEMENT POUR 
@@ -47,7 +48,7 @@ if ($nbEtab != 0 && $nbTypesChambres != 0) {
         foreach ($lesTypesChambres as $unTypeChambre) {
 
             echo " 
-            <tr class='ligneTabQuad'>
+            <tr>
                <td>".$unTypeChambre->getId()."</td>
                <td>".$unTypeChambre->getLibelle()."</td>";
             // On récupère le nombre de chambres offertes pour l'établissement 
@@ -64,7 +65,7 @@ if ($nbEtab != 0 && $nbTypesChambres != 0) {
             </tr>";
         }
         echo "
-      </table><br>";
+      </table><br></div>";
     }
 }
 

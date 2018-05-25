@@ -12,11 +12,11 @@ function construireMenu($nom, $adr, $i) {
         // S'il s'agit de l'onglet de gauche, le style est différent car il faut 
         // conserver le trait à gauche sinon le trait de gauche est supprimé 
         // (afin d'éviter d'avoir une double épaisseur en raison du trait droit
-        // de l'onglet précédent) 
+        // de l'onglet précédent) class="ongletOuvertPrem",class="ongletOuvert",class="ongletPrem",class="onglet"
         if ($i == 1) {
-            echo '<li class="ongletOuvertPrem">' . $nom . '</li>';
+            echo '<li>' . $nom . '</li>';
         } else {
-            echo '<li class="ongletOuvert">' . $nom . '</li>';
+            echo '<li>' . $nom . '</li>';
         }
     }
     else {
@@ -25,9 +25,9 @@ function construireMenu($nom, $adr, $i) {
         // (afin d'éviter d'avoir une double épaisseur en raison du trait droit
         // de l'onglet précédent) 
         if ($i == 1) {
-            echo '<li class="ongletPrem"><a href="' . $adr . '">' . $nom . '</a></li>';
+            echo '<li><a href="' . $adr . '">' . $nom . '</a></li>';
         } else {
-            echo '<li class="onglet"><a href="' . $adr . '">' . $nom . '</a></li>';
+            echo '<li><a href="' . $adr . '">' . $nom . '</a></li>';
         }
     }
 }

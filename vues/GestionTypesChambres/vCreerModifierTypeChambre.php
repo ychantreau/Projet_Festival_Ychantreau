@@ -34,30 +34,31 @@ echo "
 <form method='POST' action='cGestionTypesChambres.php'>
    <input type='hidden' value='$action' name='action'>
    <br>
-   <table width='40%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<div style='margin-left:10%;margin-right:10%;'>
+   <table class='table'>
    
-      <tr class='enTeteTabNonQuad'>
-         <td colspan='3'><strong>$message</strong></td>
+      <tr>
+         <td><strong>$message</strong></td>
       </tr>";
 
 // En cas de création, l'id est accessible sinon l'id est dans un champ
 // caché
 if ($creation) {
     echo '
-         <tr class="ligneTabNonQuad">
+         <tr>
             <td> Id*: </td>
             <td><input type="text" value="' . $id . '" name="id" size="2" 
             maxlength="2"></td>
          </tr>';
 } else {
     echo "
-         <tr class='autreLigne'>
+         <tr>
             <td><input type='hidden' value='$id' name='id'></td><td></td>
          </tr>";
 }
 
 echo '
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> Libellé*: </td>
          <td><input type="text" value="' . $libelle . '" name="libelle" size="30" 
          maxlength="25"></td>
@@ -73,7 +74,7 @@ echo "
          </td>
       </tr>
    </table>
-   <a href='cGestionTypesChambres.php'>Retour</a>
+   <a href='cGestionTypesChambres.php'>Retour</a></div>
 </form>";
 
 include("includes/_fin.inc.php");

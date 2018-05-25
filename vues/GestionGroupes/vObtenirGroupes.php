@@ -15,11 +15,15 @@ include("includes/_debut.inc.php");
 
 echo "
 <br>
-<table width='55%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
-
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='4'><strong>Groupes</strong></td>
-   </tr>";
+<div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>
+   <thead>
+   <tr>
+      <th><strong>Groupes</strong></th>
+      <th>Détail</th>
+   </tr>
+   </thead>
+   <tbody>";
 
 $lesGroupes = GroupeDAO::getAll();
 // BOUCLE SUR LES GROUPES
@@ -27,32 +31,30 @@ foreach ($lesGroupes as $unGroupe) {
     $id = $unGroupe->getId();
     $nom = $unGroupe->getNom();
     echo "
-		<tr class='ligneTabNonQuad'>
-         <td align='center'>$nom</td>
+		<tr>
+         <td>$nom</td>
              
-        </tr>";
-/*<td width='16%' align='center'> 
+        
+        <td> 
          <a href='cGestionGroupes.php?action=detailGrp&id=$id'>
          Voir détail</a></td>
-         
-         <td width='16%' align='center'> 
-         <a href='cGestionGroupes.php?action=demanderModifierGrp&id=$id'>
-         Modifier</a></td>*/
+         ";
     // S'il existe déjà des attributions pour le groupe, il faudra
     // d'abord les supprimer avant de pouvoir supprimer le groupe
 //    if (!existeAttributionsGrp($connexion, $id)) {
    /*$lesAttributionsDeCeGroupe = AttributionDAO::getAllByIdGrp($id);
     if (count($lesAttributionsDeCeGroupe)=='N') {
         echo "
-            <td width='16%' align='center'> 
+            <td> 
             <a href='cGestionGroupes.php?action=demanderSupprimerEtab&id=$id'>
-            Supprimer</a></td>";
+            Supprimer</a></td></tr>";
    } else {
         echo "
-            <td width='16%'>&nbsp; </td>";
+            <td>&nbsp; </td></tr>";
     }*/
 }
 echo "
-</table>";
+</tbody></table>
+</div>";
 
 include("includes/_fin.inc.php");

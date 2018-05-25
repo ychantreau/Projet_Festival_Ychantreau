@@ -60,9 +60,10 @@ echo "
 <form method='POST' action='cGestionEtablissements.php?'>
    <input type='hidden' value='$action' name='action'>
    <br>
-   <table width='85%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+   <div style='margin-left:10%;margin-right:10%;'>
+   <table class='table'>
    
-      <tr class='enTeteTabNonQuad'>
+      <tr>
          <td colspan='3'><strong>$message</strong></td>
       </tr>";
 
@@ -74,7 +75,7 @@ if ($creation) {
     // ne sont pas acceptées dans l'id, on a le souci de ré-afficher l'id
     // tel qu'il a été saisi) 
     echo '
-         <tr class="ligneTabNonQuad">
+         <tr>
             <td> Id*: </td>
             <td><input type="text" value="' . $id . '" name="id" size ="10" 
             maxlength="8"></td>
@@ -86,33 +87,33 @@ if ($creation) {
          </tr>";
 }
 echo '
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> Nom*: </td>
          <td><input type="text" value="' . $nom . '" name="nom" size="50" 
          maxlength="45"></td>
       </tr>
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> Adresse*: </td>
          <td><input type="text" value="' . $adresseRue . '" name="adresseRue" 
          size="50" maxlength="45"></td>
       </tr>
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> Code postal*: </td>
          <td><input type="text" value="' . $codePostal . '" name="codePostal" 
          size="7" maxlength="5"></td>
       </tr>
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> Ville*: </td>
          <td><input type="text" value="' . $ville . '" name="ville" size="40" 
          maxlength="35"></td>
       </tr>
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> Téléphone*: </td>
          <td><input type="text" value="' . $tel . '" name="tel" size ="20" placeholder="0123456789" 
          maxlength="10"> <-entrer son numéro de téléphone 10 caractères</td>
          
       </tr>
-      <tr class="ligneTabNonQuad">
+      <tr>
          <td> E-mail: </td>
          <td><input type="text" value="' . $adresseElectronique . '" name=
          "adresseElectronique" size ="75" maxlength="70"></td>
@@ -135,10 +136,10 @@ echo "
            </td>
          </tr>
          <tr class='ligneTabNonQuad'>
-            <td colspan='2' ><strong>Responsable:</strong></td>
+            <td><strong>Responsable:</strong></td>
             
          </tr>
-         <tr class='ligneTabNonQuad'>
+         <tr>
             <td> Civilité*: </td>
             <td> <select name='civiliteResponsable'>";
 for ($i = 0; $i < 3; $i = $i + 1) {
@@ -168,7 +169,7 @@ echo "
          </td>
       </tr>
    </table>
-   <a href='cGestionEtablissements.php'>Retour</a>
+   <a href='cGestionEtablissements.php'>Retour</a></div>
 </form>";
 
 include("includes/_fin.inc.php");

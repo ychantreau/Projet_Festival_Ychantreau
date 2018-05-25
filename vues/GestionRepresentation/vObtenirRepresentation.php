@@ -29,22 +29,23 @@ if ($nbGroupes != 0 && $nbLieux != 0 ){
         
         if($dateRepresentation != $dateTest){
             if($test == 1){
-                echo"</table><br>";
+                echo"</table></div><br>";
             }
             $dateTest = $dateRepresentation;
             echo "<strong>$dateRepresentation</strong><br>
-         <table width='45%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
+         <div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>";
             echo "
-         <tr class='enTeteTabQuad'>
-            <td width='30%'>Lieu</td>
-            <td width='30%'>Groupe</td>
-            <td width='20%'>Heure Début</td>
-            <td width='20%'>HeureFin</td>
+         <tr>
+            <th>Lieu</th>
+            <th>Groupe</th>
+            <th>Heure Début</th>
+            <th>HeureFin</th>
          </tr>";
         }
         
         echo " 
-            <tr class='ligneTabQuad'>
+            <tr>
             <td>".$uneRepresentation->getLieu()->getNom()."</td>
             <td>".$uneRepresentation->getGroupe()->getNom()."</td>
             <td><center>".$uneRepresentation->getHeureDebut()."</center></td>
@@ -53,6 +54,7 @@ if ($nbGroupes != 0 && $nbLieux != 0 ){
             if($test == 0){
                 $test = 1;
             }
+        echo "</div>";
     }
      
         

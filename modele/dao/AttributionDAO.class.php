@@ -90,6 +90,25 @@ class AttributionDAO {
         }
         return $lesObjets;
     }
+    
+    /**
+     * Liste des objets Attribution concernant un établissement donné
+     * @param string $idEtab : identifiant de l'établissement dont on filtre les attributions
+     * @return array : tableau d'Attribution(s)
+     */
+    public static function getAllByIdGrp($idGrp) {
+        $lesObjets = array();
+        $requete = "SELECT * FROM Attribution WHERE IDGROUPE = :idGrp ";
+        $stmt = Bdd::getPdo()->prepare($requete);
+        $stmt->bindParam(':idGrp', $idGrp);
+        $ok = $stmt->execute();
+        if ($ok) {
+            while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $lesObjets[] = self::enregVersMetier($enreg);
+            }
+        }
+        return $lesObjets;
+    }
 
     /**
      * Liste des objets Attribution concernant un établissement donné

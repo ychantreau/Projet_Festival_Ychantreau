@@ -23,38 +23,39 @@ $hebergement = $unGrp->getHebergement();
 
 echo "
 <br>
-<table width='60%' cellspacing='0' cellpadding='0' class='tabNonQuadrille'>
+<div style='margin-left:10%;margin-right:10%;'>
+<table class='table table-bordered'>
    
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='3'><strong>ID : $id</strong></td>
+   <tr>
+      <td><strong>ID : $id</strong></td>
    </tr>
-   <tr class='ligneTabNonQuad'>
-      <td  width='20%'> Nom: </td>
+   <tr'>
+      <td> Nom: </td>
       <td>$nom</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Identite responsable: </td>
       <td>$identite</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Adresse postale: </td>
       <td>$adresse</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Nombre de personnes: </td>
       <td>$nbPers</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Pays: </td>
       <td>$pays</td>
    </tr>
-   <tr class='ligneTabNonQuad'>
+   <tr>
       <td> Hébergement: </td>
       <td>$hebergement</td>
    </tr>
 </table>
 <br>
-<a href='cGestionGroupes.php'>Retour</a>";
+<a href='cGestionGroupes.php'>Retour</a><br></div>";
 
 include("includes/_fin.inc.php");
 

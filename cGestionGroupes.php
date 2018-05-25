@@ -20,10 +20,9 @@ if (!isset($_REQUEST['action'])) {
     $_REQUEST['action'] = 'initial';
 }
     $action = $_REQUEST['action'];
-include("vues/GestionGroupes/vObtenirGroupes.php");
 // Aiguillage selon l'étape
 
-/*switch ($action) {
+switch ($action) {
     case 'initial' :
         include("vues/GestionGroupes/vObtenirGroupes.php");
         break;
@@ -33,7 +32,7 @@ include("vues/GestionGroupes/vObtenirGroupes.php");
         include("vues/GestionGroupes/vObtenirDetailGroupe.php");
         break;
 
-    case 'demanderSupprimerGrp':
+    /*case 'demanderSupprimerGrp':
         $id = $_REQUEST['id'];
         include("vues/GestionGroupes/vSupprimerGroupe.php");
         break;
@@ -82,9 +81,8 @@ include("vues/GestionGroupes/vObtenirGroupes.php");
                 include("vues/GestionGroupes/vCreerModifierGroupe.php");
             }
         }
-        break;
+        break;*/
 }
-*/
 // Fermeture de la connexion au serveur MySql
 Bdd::deconnecter();
 

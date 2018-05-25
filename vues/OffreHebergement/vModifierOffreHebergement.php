@@ -33,16 +33,16 @@ $nom = $unEtab->getNom();
 
 // AFFICHAGE DU NOM DE L'ÉTABLISSEMENT
 echo "<br><strong>$nom</strong><br><br>
-      
-   <table width='45%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
+      <div style='margin-left:10%;margin-right:10%;'>
+   <table class='table'>";
 
 // AFFICHAGE DE LA LIGNE D'EN-TÊTE
-echo "
-      <tr class='enTeteTabQuad'>
-         <td width='30%'>Type</td>
-         <td width='37%'>Capacité</td>
-         <td width='33%'>Nombre de chambres</td> 
-      </tr>";
+echo "<thead>
+         <tr>
+            <th>Type</th>
+            <th>Capacité</th>
+            <th>Nombre de chambres</th> 
+         </tr></thead>";
 
 $lesTypesChambres = TypeChambreDAO::getAll();
 
@@ -55,7 +55,7 @@ foreach ($lesTypesChambres as $unTypeChambre) {
     $libelle = $unTypeChambre->getLibelle();
 
     echo "
-         <tr class='ligneTabQuad'>
+         <tr>
             <td>$idTypeChambre</td>
             <td>$libelle</td>";
 
@@ -66,7 +66,7 @@ foreach ($lesTypesChambres as $unTypeChambre) {
 //    if ($action == 'validerModifierOffre' && (!estEntier($nbChambres[$i]) || !estModifOffreCorrecte($connexion, $idEtab, $idTypeChambre, $nbChambres[$i]))) {
      if (($action == 'validerModifierOffre') && (!estEntier($nbChambres[$i]) || ! ($nbChambres[$i] >= AttributionDAO::getNbOccupiedRooms($idEtab, $idTypeChambre)))) {
             echo "
-               <td align='center'><input type='text' value='$nbChambres[$i]' 
+               <td><input type='text' value='$nbChambres[$i]' 
                name='nbChambres[$i]' maxlength='3' class='erreur'></td>";
     } else {
         // Appel à la fonction obtenirNbOffre pour récupérer le nombre
@@ -80,7 +80,7 @@ foreach ($lesTypesChambres as $unTypeChambre) {
         }
 
         echo "
-               <td align='center'><input type='text' value='$nbOffre' 
+               <td><input type='text' value='$nbOffre' 
                name='nbChambres[$i]' maxlength='3'></td>";
     }
     // Le tableau des différents $idTypeChambre est nécessaire à
@@ -109,7 +109,7 @@ echo "
          </td>
       </tr>
    </table>
-   <a href='cOffreHebergement.php?'>Retour</a>
+   <a href='cOffreHebergement.php?'>Retour</a></div>
 </form>";
 
 include("includes/_fin.inc.php");

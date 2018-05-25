@@ -40,20 +40,21 @@ if ($nbEtabOffrantChambres != 0) {
         $nomEtab = $unEtab->getNom();
 
         echo "
-      <table width='70%' cellspacing='0' cellpadding='0' class='tabQuadrille'>";
+            <div style='margin-left:10%;margin-right:10%;'>
+        <table class='table table-bordered'>";
 
         // AFFICHAGE DE LA 1ÈRE LIGNE D'EN-TÊTE
         echo "
-         <tr class='enTeteTabQuad'>
+         <tr>
             <td colspan='$nbCol'><strong>$nomEtab</strong></td>
          </tr>";
 
         // AFFICHAGE DE LA 2ÈME LIGNE D'EN-TÊTE : 1 LIT : NOMBRE DE CHAMBRES 
         // DISPONIBLES, 2 À 3 LITS : NOMBRE DE CHAMBRES DISPONIBLES...  
         echo "
-         <tr class='enTete2TabQuad'>
+         <tr>
       
-            <td width='35%'><i>Disponibilités</i></td>";
+            <td><i>Disponibilités</i></td>";
 
         // BOUCLE SUR LES TYPES DE CHAMBRES 
         foreach ($lesTypesChambres as $unTypeChambre) {
@@ -74,8 +75,8 @@ if ($nbEtabOffrantChambres != 0) {
             $idGroupe = $unGroupe->getId();
             $nomGroupe = $unGroupe->getNom();
             echo "
-            <tr class='ligneTabQuad'>
-               <td width='35%'>&nbsp;$nomGroupe</td>";
+            <tr>
+               <td>&nbsp;$nomGroupe</td>";
 
             // BOUCLE SUR LES TYPES DE CHAMBRES (CHAQUE TYPE DE CHAMBRE 
             // FIGURE EN COLONNE)
@@ -98,7 +99,8 @@ if ($nbEtabOffrantChambres != 0) {
         } // Fin de la boucle sur les groupes
         echo "
       </table>
-      <br>";
+      <br>
+      </div>";
     } // Fin de la boucle sur les établissements
 }
 
